@@ -41,11 +41,11 @@ SurveyModel = function( incoming, token )
 	self.markdown = incoming.markdown;
 	self.token = token;
 
-	self.adminLink = "http://checkbox.io/studies/admin/?token=" + token;
+	self.adminLink = "http://localhost/studies/admin/?token=" + token;
 
 	self.setPublicLink = function(id)
 	{
-		self.publicLink = "http://checkbox.io/studies/?id=" + id;
+		self.publicLink = "http://localhost/studies/?id=" + id;
 	};
 
 
