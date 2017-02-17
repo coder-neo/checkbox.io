@@ -5,4 +5,5 @@ lib-cov/
 error.log
 output.log
 mongoUser.js
+deleteUserNDB.js
 getStudies.js
