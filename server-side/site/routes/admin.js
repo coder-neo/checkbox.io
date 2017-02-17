@@ -18,7 +18,7 @@ var emailServer  = emailjs.server.connect({
    ssl:     true
 });
 
-console.log("EMAIL - > "+process.env.EMAIL_USER+", pswd: "+process.env.EMAIL_USER)
+console.log("EMAIL - > "+process.env.EMAIL_USER+", pswd: "+process.env.EMAIL_PSWD);
 var mongo_user = process.env.MONGO_USER;
 var mongo_pswd = process.env.MONGO_PSWD;
 var MongoClient = mongo.MongoClient;

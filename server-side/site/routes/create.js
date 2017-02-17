@@ -22,8 +22,8 @@ MongoClient.connect(connectionUrl, function(err, authdb) {
 });
 
 var emailServer  = emailjs.server.connect({
-   user:    "supportemail@domain.com", 
-   password:"supportpwd", 
+   user:    process.env.EMAIL_USER, 
+   password: process.env.EMAIL_PSWD, 
    host:    "smtp.gmail.com", 
    ssl:     true
 });
