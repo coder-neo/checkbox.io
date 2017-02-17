@@ -13,9 +13,12 @@ var Server = mongo.Server,
     Db = mongo.Db,
     ObjectID = mongo.ObjectID;
 
+
+var mongo_user = process.env.MONGO_USER;
+var mongo_pswd = process.env.MONGO_PSWD;
 var MongoClient = mongo.MongoClient;
 var db = null;
-MongoClient.connect("mongodb://localhost:27017/site?authSource=admin", function(err, authdb) {
+MongoClient.connect("mongodb://"+mongo_user+":"+mongo_pswd+"@localhost:27017/site?authSource=admin", function(err, authdb) {
   // Now you can use the database in the db variable
   db = authdb;
   console.log( err || "connected!" );
