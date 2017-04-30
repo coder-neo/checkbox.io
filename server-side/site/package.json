@@ -19,6 +19,8 @@
     "mongodb": "2.2.22",
     "emailjs": "1.0.8",
     "validator": "6.2.1",
-    "async": "2.1.4"
+    "async": "2.1.4",
+    "body-parser":"1.17.1",
+    "morgan":"1.8.1"
   }
 }

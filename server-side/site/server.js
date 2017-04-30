@@ -1,20 +1,26 @@
 var express = require('express'),
         cors = require('cors'),
 	marqdown = require('./marqdown.js'),
-	//routes = require('./routes/designer.js'),
+	bodyParser = require('body-parser'),
+        logger = require('morgan'),
+        //routes = require('./routes/designer.js'),
 	//votes = require('./routes/live.js'),
 	//upload = require('./routes/upload.js'),
 	create = require('./routes/create.js'),
 	study = require('./routes/study.js'),
-	admin = require('./routes/admin.js')
-	;
+	admin = require('./routes/admin.js');
 
 var app = express();
 
-app.configure(function () {
-    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
-    app.use(express.bodyParser());
-});
+//app.configure(function () {
+//    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
+//    app.use(express.bodyParser());
+    app.use(logger('dev'));
+    app.use(bodyParser.json());                        
+
+    // parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: true }))
+//});
 
 var whitelist = ['http://chrisparnin.me', 'http://pythontutor.com', 'http://happyface.io', 'http://happyface.io:8003', 'http://happyface.io/hf.html'];
 var corsOptions = {
@@ -84,7 +90,18 @@ app.post('/api/study/admin/notify/', admin.notifyParticipant);
 //app.get('/api/design/survey/vote/status', votes.status );
 //app.get('/api/design/survey/vote/stat/:id', votes.getSurveyStats );
 
+var args = process.argv.slice(2);
+console.log(args);
+console.log(process.argv);
+var port = 3002;
+if (args.length == 0) {
+    port = 3002;
+}
+else{
+    if(args[0] == '--port')
+       port = parseInt(args[1]);
+}
+        
+app.listen(port);
+console.log('Listening on port '+port);
 
-
-app.listen(3002);
-console.log('Listening on port 3002...');
